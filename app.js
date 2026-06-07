@@ -1,25 +1,15 @@
-// Componente de função com estado — testa useState
+/** @jsx Didact.createElement */
+
 function Counter() {
   const [count, setCount] = Didact.useState(0)
 
-  return Didact.createElement(
-    "div",
-    null,
-    Didact.createElement("h1", null, `Missão 4 — Valor: ${count}`),
-    Didact.createElement(
-      "button",
-      { onClick: () => setCount(c => c + 1) },
-      "+"
-    ),
-    Didact.createElement(
-      "button",
-      { onClick: () => setCount(c => c - 1) },
-      "-"
-    )
+  return (
+    <div>
+      <h1>Contador: {count}</h1>
+      <button onClick={() => setCount(c => c + 1)}>+</button>
+      <button onClick={() => setCount(c => c - 1)}>-</button>
+    </div>
   )
 }
 
-Didact.render(
-  Didact.createElement(Counter, null),
-  document.getElementById("root")
-)
+Didact.render(<Counter />, document.getElementById("root"))
