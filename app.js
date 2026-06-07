@@ -1,17 +1,25 @@
-// Testa reconciliação: re-renderiza a cada segundo
-// No DevTools, o div wrapper não deve piscar — apenas o texto muda
-let counter = 0
+// Componente de função com estado — testa useState
+function Counter() {
+  const [count, setCount] = Didact.useState(0)
 
-function tick() {
-  counter++
-  const element = Didact.createElement(
+  return Didact.createElement(
     "div",
     null,
-    Didact.createElement("h1", null, `Missão 3 — Contagem: ${counter}`),
-    Didact.createElement("p", null, "O div wrapper é reusado, apenas o texto muda.")
+    Didact.createElement("h1", null, `Missão 4 — Valor: ${count}`),
+    Didact.createElement(
+      "button",
+      { onClick: () => setCount(c => c + 1) },
+      "+"
+    ),
+    Didact.createElement(
+      "button",
+      { onClick: () => setCount(c => c - 1) },
+      "-"
+    )
   )
-  Didact.render(element, document.getElementById("root"))
 }
 
-tick()
-setInterval(tick, 1000)
+Didact.render(
+  Didact.createElement(Counter, null),
+  document.getElementById("root")
+)
