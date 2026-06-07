@@ -1,15 +1,14 @@
-/** @jsx Didact.createElement */
+// Estrutura: A tem filhos B e C; B tem filho D
+// Ordem de travessia esperada: A → B → D → C
+const element = Didact.createElement(
+  "div",
+  { id: "A" },
+  Didact.createElement(
+    "div",
+    { id: "B" },
+    Didact.createElement("div", { id: "D" }, "D")
+  ),
+  Didact.createElement("div", { id: "C" }, "C")
+)
 
-function Counter() {
-  const [count, setCount] = Didact.useState(0)
-
-  return (
-    <div>
-      <h1>Contador: {count}</h1>
-      <button onClick={() => setCount(c => c + 1)}>+</button>
-      <button onClick={() => setCount(c => c - 1)}>-</button>
-    </div>
-  )
-}
-
-Didact.render(<Counter />, document.getElementById("root"))
+Didact.render(element, document.getElementById("root"))
